@@ -32,4 +32,11 @@ describe("The Trip", function(){
     const testDrive = new Trip(Alex, startTime, endTime);
     expect(testDrive.endTime).toBe(endTime);
   });
+  it("should have a distance", function(){
+    const startTime = "6:00";
+    const endTime = "9:00";
+    const miles = 17;
+    const testDrive = new Trip(Alex, startTime, endTime, miles);
+    expect(testDrive.miles).toBe(miles);
+  });
 });
