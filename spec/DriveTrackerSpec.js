@@ -19,4 +19,10 @@ describe("The Trip", function(){
     const testDrive = new Trip(Alex);
     expect(testDrive.driver).toBe(Alex);
   });
+  it("should have a start time", function(){
+    const Alex = new Driver();
+    const startTime = "6:00";
+    const testDrive = new Trip(Alex, startTime);
+    expect(testDrive.startTime).toBe(startTime);
+  });
 });
