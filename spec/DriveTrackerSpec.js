@@ -11,6 +11,8 @@ describe("The Driver", function() {
 });
 describe("The Trip", function(){
     const Alex = new Driver();
+
+
   it("should be a trip", function(){
     const testDrive = new Trip();
     expect(testDrive instanceof Trip).toBeTruthy();
@@ -24,9 +26,10 @@ describe("The Trip", function(){
     const testDrive = new Trip(Alex, startTime);
     expect(testDrive.startTime).toBe(startTime);
   });
-  it("should have a start time", function(){
+  it("should have a end time", function(){
     const startTime = "6:00";
-    const testDrive = new Trip(Alex, startTime);
-    expect(testDrive.startTime).toBe(startTime);
+    const endTime = "9:00";
+    const testDrive = new Trip(Alex, startTime, endTime);
+    expect(testDrive.endTime).toBe(endTime);
   });
 });
