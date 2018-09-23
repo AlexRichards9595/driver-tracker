@@ -1,14 +1,18 @@
 var Driver = function(){
   this.trips = [];
+  Driver.drivers.push(this);
 }
+
+Driver.drivers = [];
+
 var Trip = function(driver, startTime, endTime, miles){
   this.driver = driver;
   this.startTime = startTime;
   this.endTime = endTime;
   this.miles = miles;
   this.addTrip();
-
 }
+
 Trip.prototype.calculateDuration = function (startTime, endTime) {
   const splitStartTime = startTime.split(":");
   const splitEndTime = endTime.split(":");
@@ -26,5 +30,5 @@ Trip.prototype.addTrip = function () {
   this.driver.trips.push({
     duration:duration,
     distance:distance
-  })
+  });
 };

@@ -17,6 +17,11 @@ describe("The Driver", function() {
     const testDrive = new Trip(Alex, "6:00", "9:00", 17);
     expect(Alex.trips.length).not.toEqual(0);
   });
+  it("should be stored in an array of all drivers", function(){
+    expect(Driver.drivers).toBeTruthy();
+    const Alex = new Driver();
+    expect(Driver.drivers.length).not.toEqual(0);
+  });
 });
 describe("The Trip", function(){
     const Alex = new Driver();
