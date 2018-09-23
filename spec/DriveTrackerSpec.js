@@ -26,7 +26,7 @@ describe("The Trip", function(){
     const testDrive = new Trip(Alex, startTime);
     expect(testDrive.startTime).toBe(startTime);
   });
-  it("should have a end time", function(){
+  it("should have an end time", function(){
     const startTime = "6:00";
     const endTime = "9:00";
     const testDrive = new Trip(Alex, startTime, endTime);
@@ -38,5 +38,12 @@ describe("The Trip", function(){
     const miles = 17;
     const testDrive = new Trip(Alex, startTime, endTime, miles);
     expect(testDrive.miles).toBe(miles);
+  });
+  it("should calculate the duration of the trip to the hour", function(){
+    const startTime = "6:00";
+    const endTime = "9:00";
+    const testDrive = new Trip(Alex, startTime, endTime);
+    const duration = testDrive.calculateDuration(startTime, endTime);
+    expect(duration).toEqual(3);
   });
 });
