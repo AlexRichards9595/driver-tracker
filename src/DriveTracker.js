@@ -6,6 +6,8 @@ var Trip = function(driver, startTime, endTime, miles){
   this.startTime = startTime;
   this.endTime = endTime;
   this.miles = miles;
+  this.addTrip();
+
 }
 Trip.prototype.calculateDuration = function (startTime, endTime) {
   const splitStartTime = startTime.split(":");
@@ -17,4 +19,12 @@ Trip.prototype.calculateDuration = function (startTime, endTime) {
   const startTimeMin = parseInt(splitStartTime[1])/60;
   const endTimeMin = parseInt(splitEndTime[1])/60;
   return ((endTimeHour + endTimeMin) - (startTimeHour + startTimeMin));
+};
+Trip.prototype.addTrip = function () {
+  const duration = this.calculateDuration(this.startTime, this.endTime);
+  const distance = this.miles;
+  this.driver.trips.push({
+    duration:duration,
+    distance:distance
+  })
 };
