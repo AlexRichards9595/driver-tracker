@@ -53,4 +53,11 @@ describe("The Trip", function(){
     const duration = testDrive.calculateDuration(startTime, endTime);
     expect(duration).toEqual(3.25);
   });
+  it("should handle minutes in end time being greater than start time", function(){
+    const startTime = "6:30";
+    const endTime = "9:15";
+    const testDrive = new Trip(Alex, startTime, endTime);
+    const duration = testDrive.calculateDuration(startTime, endTime);
+    expect(duration).toEqual(2.75);
+  });
 });
