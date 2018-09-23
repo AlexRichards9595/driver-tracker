@@ -8,21 +8,31 @@ describe("The Driver", function() {
     const Alex = new Driver();
     expect(Alex instanceof Driver).toBeTruthy();
   });
-  it("should have trips", function(){
+  it("should have totalMiles", function(){
     const Alex = new Driver();
-    expect(Alex.trips).toBeTruthy();
+    expect(Alex.totalMiles).toBe(0);
+  });
+  it("should have totalDriveTime", function(){
+    const Alex = new Driver();
+    expect(Alex.totalDriveTime).toBe(0);
   });
   it("should add a trip when they are the driver of the trip", function(){
     const Alex = new Driver();
     const testDrive = new Trip(Alex, "6:00", "9:00", 17);
-    expect(Alex.trips.length).not.toEqual(0);
+    expect(Alex.totalMiles).not.toEqual(0);
+    expect(Alex.totalDriveTime).not.toEqual(0);
   });
   it("should be stored in an array of all drivers", function(){
     expect(Driver.drivers).toBeTruthy();
     const Alex = new Driver();
     expect(Driver.drivers.length).not.toEqual(0);
   });
+  it("should have a total miles for all of his trips", function(){
+
+  });
 });
+
+
 describe("The Trip", function(){
     const Alex = new Driver();
     const startTime = "6:00";

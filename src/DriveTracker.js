@@ -1,5 +1,6 @@
 var Driver = function(){
-  this.trips = [];
+  this.totalMiles = 0;
+  this.totalDriveTime = 0;
   Driver.drivers.push(this);
 }
 
@@ -27,8 +28,6 @@ Trip.prototype.calculateDuration = function (startTime, endTime) {
 Trip.prototype.addTrip = function () {
   const duration = this.calculateDuration(this.startTime, this.endTime);
   const distance = this.miles;
-  this.driver.trips.push({
-    duration:duration,
-    distance:distance
-  });
+  this.driver.totalMiles += distance;
+  this.driver.totalDriveTime += duration;
 };
