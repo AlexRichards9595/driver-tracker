@@ -46,4 +46,11 @@ describe("The Trip", function(){
     const duration = testDrive.calculateDuration(startTime, endTime);
     expect(duration).toEqual(3);
   });
+  it("should calculate the duration of the trip to the minute as a decimal of hour", function(){
+    const startTime = "6:15";
+    const endTime = "9:30";
+    const testDrive = new Trip(Alex, startTime, endTime);
+    const duration = testDrive.calculateDuration(startTime, endTime);
+    expect(duration).toEqual(3.25);
+  });
 });
