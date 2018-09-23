@@ -4,31 +4,26 @@ describe("The Test", function(){
   });
 });
 describe("The Driver", function() {
+  const Alex = new Driver();
+
   it("should be a driver", function(){
-    const Alex = new Driver();
     expect(Alex instanceof Driver).toBeTruthy();
   });
-  it("should have totalMiles", function(){
-    const Alex = new Driver();
-    expect(Alex.totalMiles).toBe(0);
-  });
-  it("should have totalDriveTime", function(){
-    const Alex = new Driver();
-    expect(Alex.totalDriveTime).toBe(0);
-  });
-  it("should add a trip when they are the driver of the trip", function(){
-    const Alex = new Driver();
+  it("should story the total sum of all trip miles and times", function(){
     const testDrive = new Trip(Alex, "6:00", "9:00", 17);
-    expect(Alex.totalMiles).not.toEqual(0);
-    expect(Alex.totalDriveTime).not.toEqual(0);
+    const testDrive2 = new Trip(Alex, "6:00", "6:30", 17);
+    expect(Alex.totalMiles).toEqual(34);
+    expect(Alex.totalDriveTime).toEqual(3.5);
   });
   it("should be stored in an array of all drivers", function(){
     expect(Driver.drivers).toBeTruthy();
-    const Alex = new Driver();
     expect(Driver.drivers.length).not.toEqual(0);
   });
   it("should have a total miles for all of his trips", function(){
-
+  });
+  it("should calculate drivers average mph", function(){
+    const averageMPH = Alex.calculateMPH();
+    expect(averageMPH).toBe((Alex.totalMiles/Alex.totalDriveTime)*60);
   });
 });
 

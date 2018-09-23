@@ -4,6 +4,10 @@ var Driver = function(){
   Driver.drivers.push(this);
 }
 
+Driver.prototype.calculateMPH = function () {
+  return ((this.totalMiles/this.totalDriveTime)*60)
+};
+
 Driver.drivers = [];
 
 var Trip = function(driver, startTime, endTime, miles){
@@ -25,6 +29,7 @@ Trip.prototype.calculateDuration = function (startTime, endTime) {
   const endTimeMin = parseInt(splitEndTime[1])/60;
   return ((endTimeHour + endTimeMin) - (startTimeHour + startTimeMin));
 };
+
 Trip.prototype.addTrip = function () {
   const duration = this.calculateDuration(this.startTime, this.endTime);
   const distance = this.miles;
