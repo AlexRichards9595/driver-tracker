@@ -8,10 +8,13 @@ describe("The Driver", function() {
     const Alex = new Driver();
     expect(Alex instanceof Driver).toBeTruthy();
   });
+  it("should have trips", function(){
+    const Alex = new Driver();
+    expect(Alex.trips).toBeTruthy();
+  });
 });
 describe("The Trip", function(){
     const Alex = new Driver();
-
 
   it("should be a trip", function(){
     const testDrive = new Trip();
