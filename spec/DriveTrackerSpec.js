@@ -4,12 +4,12 @@ describe("The Test", function(){
   });
 });
 describe("The Driver", function() {
-  const Alex = new Driver();
-
   it("should be a driver", function(){
+    const Alex = new Driver("Alex");
     expect(Alex instanceof Driver).toBeTruthy();
   });
   it("should story the total sum of all trip miles and times", function(){
+    const Alex = new Driver("Alex");
     const testDrive = new Trip(Alex, "6:00", "9:00", 17);
     const testDrive2 = new Trip(Alex, "6:00", "6:30", 17);
     expect(Alex.totalMiles).toEqual(34);
@@ -19,17 +19,30 @@ describe("The Driver", function() {
     expect(Driver.drivers).toBeTruthy();
     expect(Driver.drivers.length).not.toEqual(0);
   });
-  it("should have a total miles for all of his trips", function(){
+  it("should have an average mph", function(){
+    const Speedster = new Driver("Collin");
+    const firstTrip = new Trip(Speedster, "6:00", "9:00", 200);
+    const secondTrip = new Trip(Speedster, "6:00", "9:00", 150);
+
+    const averageMPH = Speedster.calculateMPH();
+    console.log(averageMPH);
+    expect(averageMPH).toBe((Speedster.totalMiles/Speedster.totalDriveTime)*60);
   });
-  it("should calculate drivers average mph", function(){
-    const averageMPH = Alex.calculateMPH();
-    expect(averageMPH).toBe((Alex.totalMiles/Alex.totalDriveTime)*60);
+  it("should set average mph to zero if no trips", function(){
+    const totallyNewDriver = new Driver("Ron");
+    const averageMPH = totallyNewDriver.calculateMPH();
+    expect(averageMPH).toEqual(0);
+  });
+  it("should be stored in drivers array by most miles to least", function(){
+    const Bob = new Driver("Bob");
+    const bobsTrip = new Trip(Bob, "6:00", "9:00", 100);
+    expect(Driver.drivers[0].name).toBe("Bob");
   });
 });
 
 
 describe("The Trip", function(){
-    const Alex = new Driver();
+    const Alex = new Driver("Alex");
     const startTime = "6:00";
     const endTime = "9:00";
     const miles = 17;
