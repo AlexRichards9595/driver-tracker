@@ -1,3 +1,19 @@
+// const readline = require('readline')createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+//   terminal: false
+// });
+//
+// readline.on('line', function(line){
+//   const parsedLine = line.split(' ');
+//   if(parsedLine[0] === 'Driver') {
+//     const driver = new Driver(parsedLine[0]);
+//   }
+//   else {
+//     const trip = new Trip(parsedLine[1], parsedLine[2], parsedLine[3], parsedLine[4])
+//   }
+// });
+
 var Driver = function(name){
   this.name = name;
   this.totalMiles = 0;
@@ -8,7 +24,7 @@ var Driver = function(name){
 
 Driver.prototype.calculateMPH = function () {
   if(this.totalMiles > 0){
-    return ((this.totalMiles/this.totalDriveTime)*60)
+    return (Math.round((this.totalMiles/this.totalDriveTime)))
   }
   else {
     return 0;
