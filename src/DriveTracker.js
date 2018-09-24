@@ -42,4 +42,7 @@ Trip.prototype.addTrip = function () {
   const distance = this.miles;
   this.driver.totalMiles = this.driver.totalMiles + distance;
   this.driver.totalDriveTime = this.driver.totalDriveTime + duration;
+  Driver.drivers.sort(function(a,b){
+    return b.totalMiles - a.totalMiles;
+  });
 };

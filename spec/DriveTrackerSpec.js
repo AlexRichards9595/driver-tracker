@@ -25,16 +25,19 @@ describe("The Driver", function() {
     const secondTrip = new Trip(Speedster, "6:00", "9:00", 150);
 
     const averageMPH = Speedster.calculateMPH();
-    console.log(averageMPH);
     expect(averageMPH).toBe((Speedster.totalMiles/Speedster.totalDriveTime)*60);
   });
   it("should set average mph to zero if no trips", function(){
-    const totallyNewDriver = new Driver("Ron");
-    const averageMPH = totallyNewDriver.calculateMPH();
+    const Alex = new Driver("Alex");
+    const averageMPH = Alex.calculateMPH();
     expect(averageMPH).toEqual(0);
   });
   it("should be stored in drivers array by most miles to least", function(){
+    Driver.drivers = [];
+
+    const Alex = new Driver("Alex");
     const Bob = new Driver("Bob");
+    const testDrive = new Trip(Alex, "6:00", "9:00", 17);
     const bobsTrip = new Trip(Bob, "6:00", "9:00", 100);
     expect(Driver.drivers[0].name).toBe("Bob");
   });
