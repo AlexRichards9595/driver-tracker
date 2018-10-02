@@ -1,18 +1,21 @@
-// const readline = require('readline')createInterface({
-//   input: process.stdin,
-//   output: process.stdout,
-//   terminal: false
-// });
-//
-// readline.on('line', function(line){
-//   const parsedLine = line.split(' ');
-//   if(parsedLine[0] === 'Driver') {
-//     const driver = new Driver(parsedLine[0]);
-//   }
-//   else {
-//     const trip = new Trip(parsedLine[1], parsedLine[2], parsedLine[3], parsedLine[4])
-//   }
-// });
+var lineReader = require('readline').createInterface({
+  input: require('fs').createReadStream('input.txt'),
+  output: process.stdout,
+  terminal: false
+});
+
+lineReader.on('line', function (line) {
+  const parsedLine = line.split(' ');
+  if(parsedLine[0] === 'Driver') {
+    const driver = new Driver(parsedLine[1]);
+    console.log(driver);
+  }
+  else {
+    const trip = new Trip(parsedLine[1], parsedLine[2], parsedLine[3], parsedLine[4])
+    console.log(trip);
+  }
+
+});
 
 var Driver = function(name){
   this.name = name;
