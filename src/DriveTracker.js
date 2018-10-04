@@ -40,11 +40,13 @@ Trip.prototype.calculateDuration = function (startTime, endTime) {
 Trip.prototype.addTrip = function () {
   const duration = this.calculateDuration(this.startTime, this.endTime);
   const distance = this.miles;
-  this.driver.totalMiles = this.driver.totalMiles + distance;
-  this.driver.totalDriveTime = this.driver.totalDriveTime + duration;
-  Driver.drivers.sort(function(a,b){
-    return b.totalMiles - a.totalMiles;
-  });
+  if(((distance/duration) >= 5) && ((distance/duration) <= 100)) {
+    this.driver.totalMiles = this.driver.totalMiles + distance;
+    this.driver.totalDriveTime = this.driver.totalDriveTime + duration;
+    Driver.drivers.sort(function(a,b){
+      return b.totalMiles - a.totalMiles;
+    });
+  }
 };
 
 module.exports = { Driver, Trip };

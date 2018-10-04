@@ -86,4 +86,14 @@ describe("The Trip", function(){
     const duration = specialTestDrive.calculateDuration(this.startTime, this.endTime);
     expect(duration).toEqual(2.75);
   });
+  it("should not include trips of less than five miles per hour", function(){
+    const oldMiles = alex.totalMiles;
+    const slowTrip = new Trip ('Alex', startTime, endTime, 3);
+    expect(alex.totalMiles).toBe(oldMiles);
+  });
+  it("should not include trips of more than one hundred miles per hour", function(){
+    const oldMiles = alex.totalMiles;
+    const slowTrip = new Trip ('Alex', startTime, endTime, 350);
+    expect(alex.totalMiles).toBe(oldMiles);
+  });
 });
