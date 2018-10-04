@@ -1,22 +1,3 @@
-var lineReader = require('readline').createInterface({
-  input: require('fs').createReadStream('input.txt'),
-  output: process.stdout,
-  terminal: false
-});
-
-lineReader.on('line', function (line) {
-  const parsedLine = line.split(' ');
-  if(parsedLine[0] === 'Driver') {
-    const driver = new Driver(parsedLine[1]);
-    console.log(driver);
-  }
-  else {
-    const trip = new Trip(parsedLine[1], parsedLine[2], parsedLine[3], parsedLine[4])
-    console.log(trip);
-  }
-
-});
-
 var Driver = function(name){
   this.name = name;
   this.totalMiles = 0;
@@ -37,7 +18,7 @@ Driver.prototype.calculateMPH = function () {
 Driver.drivers = [];
 
 var Trip = function(driver, startTime, endTime, miles){
-  this.driver = driver;
+  this.driver = Driver.drivers.find(d => d.name === driver);
   this.startTime = startTime;
   this.endTime = endTime;
   this.miles = miles;
@@ -65,3 +46,5 @@ Trip.prototype.addTrip = function () {
     return b.totalMiles - a.totalMiles;
   });
 };
+
+module.exports = { Driver, Trip };

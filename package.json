@@ -1,0 +1,27 @@
+{
+  "name": "driver-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine",
+    "start": "node src/app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexRichards9595/driver-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexRichards9595/driver-tracker/issues"
+  },
+  "homepage": "https://github.com/AlexRichards9595/driver-tracker#readme",
+  "devDependencies": {
+    "jasmine": "^3.2.0"
+  }
+}

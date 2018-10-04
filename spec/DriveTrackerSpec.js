@@ -1,3 +1,5 @@
+const {Driver, Trip} = require('../src/DriveTracker');
+
 describe("The Test", function(){
   it("should pass", function() {
     expect(true).toBe(true);
