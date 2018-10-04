@@ -20,8 +20,7 @@ lineReader.on('line', function (line) {
     const driver = new Driver(parsedLine[1]);
   }
   else if (parsedLine[0] === 'Trip') {
-    const parsedMiles = parseInt(parsedLine[4]);
-    console.log(parsedMiles);
+    const parsedMiles = parseFloat(parsedLine[4]);
     const trip = new Trip(parsedLine[1], parsedLine[2], parsedLine[3], parsedMiles)
   }
   else {
@@ -33,6 +32,7 @@ lineReader.on('close', function(){
 
   for (driver of Driver.drivers) {
     if (driver.totalMiles) {
+      driver.totalMiles = Math.round(driver.totalMiles);
       report += `${driver.name}: ${driver.totalMiles} miles @ ${driver.calculateMPH()} mph \n`
     } else {
       report += `${driver.name}: 0 miles \n`
